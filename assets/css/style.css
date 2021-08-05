@@ -68,4 +68,98 @@ header section:last-of-type a:hover {
   background-color: #fff;
 }
 
+/* ==================== Section: Summary */
+#summary {
+  background: url(../img/map.svg) bottom right/30% no-repeat;
+  padding: 100px 0 100px 100px;
+  margin-bottom: 200px;
+}
+#summary h3 {
+  font-family: LarishNeueSemibold, serif;
+  font-size: 6rem;
+  color: #fff;
+}
+#summary h3:first-of-type {
+  padding: 0 200px 100px 0;
+}
+#summary h4 {
+  font-family: Work Sans, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #fff;
+  padding-top: 20px;
+}
+
+/* ==================== Section: Stuck in the middle. */
+#stuck {
+  background-color: #fff;
+}
+#stuck h3, #stuck p {
+  padding: 0 35%;
+}
+#stuck h3 {
+  font-family: LarishNeueSemibold, serif;
+  font-size: 6rem;
+  color: #000;
+  font-size: 4.5em;
+  padding-top: 5%;
+}
+#stuck p {
+  font-family: Work Sans, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #000;
+}
+#stuck div {
+  padding-top: 35%;
+}
+#stuck img:nth-of-type(1) {
+  width: 25%;
+  position: relative;
+  top: -110px;
+  left: 60%;
+}
+#stuck img:nth-of-type(2) {
+  width: 20%;
+  position: relative;
+  top: -38vh;
+  left: 50px;
+}
+#stuck img:nth-of-type(3) {
+  width: 20%;
+  position: relative;
+  top: -2vh;
+  left: 60%;
+}
+#stuck img:nth-of-type(4) {
+  width: 25%;
+  position: relative;
+  top: 22vh;
+  left: -30%;
+}
+#stuck img:nth-of-type(5) {
+  width: 24%;
+  position: relative;
+  top: 42vh;
+  left: 0%;
+}
+#stuck img:nth-of-type(6) {
+  width: 20%;
+  position: relative;
+  top: -24vh;
+  left: 0%;
+}
+#stuck img:nth-of-type(7) {
+  width: 28%;
+  position: relative;
+  top: 7vh;
+  left: 24%;
+}
+
+/* ==================== Section: Golden bear */
+#goldenBear {
+  height: 100vh;
+  background-color: #000;
+}
+
 /*# sourceMappingURL=style.css.map */

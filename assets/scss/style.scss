@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
-
 @font-face {
     font-family: LarishNeueSemibold;
     src: url(../fonts/LarishNeueSemibold.woff);
@@ -47,6 +46,12 @@ $darkGrey: #666;
         background-color: #fff;
     }
 }
+@mixin position-image ($size, $top, $left) {
+    width: $size;
+    position: relative;
+    top: $top;
+    left: $left;
+}
 
 /* ==================== Header */
 header {
@@ -55,7 +60,7 @@ header {
         flex-direction: column;
         align-items: center;
         div {
-            background-color: #666;
+            background-color: $darkGrey;
             width: 2px;
             height: 200px;
             margin-bottom: 50px;
@@ -81,4 +86,65 @@ header {
     }
 }
 
-/* ==================== Section */
+/* ==================== Section: Summary */
+#summary {
+    background: url(../img/map.svg) bottom right/30% no-repeat;
+    padding: 100px 0 100px 100px;
+    margin-bottom: 200px;
+    h3 {
+        @include heading-text($white);
+    }
+    h3:first-of-type {
+        padding: 0 200px 100px 0;
+    }
+    h4 {
+        @include regular-text($white);
+        padding-top: 20px;
+    }
+}
+
+/* ==================== Section: Stuck in the middle. */
+#stuck {
+    background-color: $white;
+    h3, p {
+        padding: 0 35%;
+    }
+    h3 {
+        @include heading-text($black);
+        font-size: 4.5em;
+        padding-top: 5%;
+    }
+    p {
+        @include regular-text($black);
+    }
+    div {
+        padding-top: 35%;
+    }
+    img:nth-of-type(1) {
+        @include position-image(25%, -110px, 60%)
+    }
+    img:nth-of-type(2) {
+        @include position-image(20%, -38vh, 50px)
+    }
+    img:nth-of-type(3) {
+        @include position-image(20%, -2vh, 60%);
+    }
+    img:nth-of-type(4) {
+        @include position-image(25%, 22vh, -30%)
+    }
+    img:nth-of-type(5) {
+        @include position-image(24%, 42vh, 0%)
+    }
+    img:nth-of-type(6) {
+        @include position-image(20%, -24vh, 0%)
+    }
+    img:nth-of-type(7) {
+        @include position-image(28%, 7vh, 24%)
+    }
+}
+
+/* ==================== Section: Golden bear */
+#goldenBear {
+    height: 100vh;
+    background-color: $black;
+}
