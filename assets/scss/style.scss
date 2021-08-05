@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
+
+@font-face {
+    font-family: LarishNeueSemibold;
+    src: url(../fonts/LarishNeueSemibold.woff);
+    src: url(../fonts/LarishNeueSemibold.woff2);
+}
+
+/* ==================== Color variables */
+$black: #000;
+$white: #fff;
+$lightGrey: #999;
+$darkGrey: #666;
+
+/* ==================== General styles & css reset */
+:root {
+    background-color: $black;
+}
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: $white;
+}
+
+/* ==================== Mixins */
+@mixin regular-text ($color) {
+    font-family: Work Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    color: $color;
+}
+@mixin heading-text ($color) {
+    font-family: LarishNeueSemibold, serif;
+    font-size: 6rem;
+    color: $color;
+}
+@mixin RSVP-button {
+    border: 2px solid $lightGrey;
+    padding: 10px 30px;
+    @include regular-text($white);
+    font-size: 1.1rem;
+    transition: 0.3s;
+    &:hover {
+        border: 2px solid $white;
+        color: $black;
+        background-color: #fff;
+    }
+}
+
+/* ==================== Header */
+header {
+    section:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        div {
+            background-color: #666;
+            width: 2px;
+            height: 200px;
+            margin-bottom: 50px;
+        }
+        h2 {
+            @include regular-text($white)
+        }
+        h1:first-of-type {
+            @include heading-text($white)
+        }
+        h1:last-of-type {
+            @include heading-text($black);
+            -webkit-text-stroke: 1px $white;
+        }
+    }
+    section:last-of-type {
+        display: flex;
+        justify-content: space-between;
+        padding: 100px;
+        a {
+            @include RSVP-button();
+        }
+    }
+}
