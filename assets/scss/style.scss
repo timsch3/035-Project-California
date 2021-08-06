@@ -24,14 +24,13 @@ $darkGrey: #666;
 
 /* ==================== Mixins */
 @mixin regular-text ($color) {
-    font-family: Work Sans, sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
+    font: 1rem/2rem normal Work Sans, sans-serif;
     color: $color;
 }
 @mixin heading-text ($color) {
     font-family: LarishNeueSemibold, serif;
-    font-size: 6rem;
+    font-size: 4.5rem;
+    line-height: 1em;
     color: $color;
 }
 @mixin RSVP-button {
@@ -43,14 +42,12 @@ $darkGrey: #666;
     &:hover {
         border: 2px solid $white;
         color: $black;
-        background-color: #fff;
+        background-color: $white;
     }
 }
-@mixin position-image ($size, $top, $left) {
-    width: $size;
-    position: relative;
-    top: $top;
-    left: $left;
+@mixin adjust($width, $offsetX, $offsetY) {
+    max-width: $width;
+    transform: translate($offsetX, $offsetY);
 }
 
 /* ==================== Header */
@@ -66,14 +63,18 @@ header {
             margin-bottom: 50px;
         }
         h2 {
-            @include regular-text($white)
+            @include regular-text($white);
         }
         h1:first-of-type {
-            @include heading-text($white)
+            @include heading-text($white);
+            font-size: 6rem;
         }
         h1:last-of-type {
             @include heading-text($black);
+            font-size: 6rem;
+            line-height: 0.6em;
             -webkit-text-stroke: 1px $white;
+            padding-bottom: 20px;
         }
     }
     section:last-of-type {
@@ -93,58 +94,106 @@ header {
     margin-bottom: 200px;
     h3 {
         @include heading-text($white);
+        font-size: 6rem;
     }
     h3:first-of-type {
         padding: 0 200px 100px 0;
     }
     h4 {
         @include regular-text($white);
-        padding-top: 20px;
+        padding-top: 25px;
     }
 }
 
 /* ==================== Section: Stuck in the middle. */
 #stuck {
     background-color: $white;
-    h3, p {
-        padding: 0 35%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h3 {
         @include heading-text($black);
-        font-size: 4.5em;
-        padding-top: 5%;
     }
     p {
         @include regular-text($black);
     }
-    div {
-        padding-top: 35%;
+    div:nth-of-type(1)>img {
+        @include adjust(23vw, 27vw, -15vh)
     }
-    img:nth-of-type(1) {
-        @include position-image(25%, -110px, 60%)
+    div:nth-of-type(2)>img {
+        @include adjust(20vw, -34vw, 10vh)
     }
-    img:nth-of-type(2) {
-        @include position-image(20%, -38vh, 50px)
+    div:nth-of-type(3) { /* h3 + p */
+        @include adjust(32vw, 0, 0)
     }
-    img:nth-of-type(3) {
-        @include position-image(20%, -2vh, 60%);
+    div:nth-of-type(4) {
+        align-self: flex-end;
     }
-    img:nth-of-type(4) {
-        @include position-image(25%, 22vh, -30%)
+    div:nth-of-type(4)>img {
+        @include adjust(20vw, 0, -10vh)
     }
-    img:nth-of-type(5) {
-        @include position-image(24%, 42vh, 0%)
+    div:nth-of-type(5)>img {
+        @include adjust(22vw, -21vw, -8vh)
     }
-    img:nth-of-type(6) {
-        @include position-image(20%, -24vh, 0%)
+    div:nth-of-type(6)>img {
+        @include adjust(22vw, 24vw, -15vh)
     }
-    img:nth-of-type(7) {
-        @include position-image(28%, 7vh, 24%)
+    div:nth-of-type(7) { /* p */
+        @include adjust(32vw, 0, 0)
+    }
+    div:nth-of-type(8) {
+        align-self: flex-start;
+    }
+    div:nth-of-type(8)>img {
+        @include adjust(20vw, 0, -32vh)
+    }
+    div:nth-of-type(9)>img {
+        @include adjust(30vw, 15vw, 12vh)
     }
 }
 
 /* ==================== Section: Golden bear */
-#goldenBear {
-    height: 100vh;
-    background-color: $black;
+.bear {
+    padding: 20vh 0 0 100px;
+    display: flex;
+    align-items: center;
+    div:first-of-type {
+        p {
+            @include regular-text($white);
+            padding-bottom: 20px;
+        }
+        h3 {
+            @include heading-text($white)
+        }
+        padding-right: 15%;
+    }
+    div:last-of-type {
+        p:first-of-type {
+            @include heading-text($white);
+            font-size: 1.5rem;
+            max-width: 80%;
+            padding-bottom: 20px;
+        }
+        p:last-of-type {
+            @include regular-text($white);
+        }
+    }
+    img:first-of-type {
+        width: 200px;
+    }
+    img:last-of-type {
+        width: 200px;
+    }
+}
+#poppyBear {
+    background-color: $white;
+    img {
+        animation: turning 10s linear infinite;
+        width: 30vw;
+    }
+    @keyframes turning {
+        to {
+            transform: rotateZ(-360deg);
+        }
+    }
 }
