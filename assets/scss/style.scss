@@ -8,8 +8,8 @@
 /* ==================== Color variables */
 $black: #000;
 $white: #fff;
-$lightGrey: #999;
-$darkGrey: #666;
+$lightGrey: #666;
+$darkGrey: #333;
 
 /* ==================== General styles & css reset */
 :root {
@@ -19,17 +19,15 @@ $darkGrey: #666;
     padding: 0;
     margin: 0;
     text-decoration: none;
-    color: $white;
 }
 
 /* ==================== Mixins */
 @mixin regular-text ($color) {
-    font: 1rem/2rem normal Work Sans, sans-serif;
+    font: normal normal normal 1rem/2rem Work Sans, sans-serif;
     color: $color;
 }
-@mixin heading-text ($color) {
-    font-family: LarishNeueSemibold, serif;
-    font-size: 4.5rem;
+@mixin heading-text ($size, $color) {
+    font: normal normal normal $size LarishNeueSemibold, serif;
     line-height: 1em;
     color: $color;
 }
@@ -66,12 +64,10 @@ header {
             @include regular-text($white);
         }
         h1:first-of-type {
-            @include heading-text($white);
-            font-size: 6rem;
+            @include heading-text(6rem, $white);
         }
         h1:last-of-type {
-            @include heading-text($black);
-            font-size: 6rem;
+            @include heading-text(6rem, $black);
             line-height: 0.6em;
             -webkit-text-stroke: 1px $white;
             padding-bottom: 20px;
@@ -93,8 +89,7 @@ header {
     padding: 100px 0 100px 100px;
     margin-bottom: 200px;
     h3 {
-        @include heading-text($white);
-        font-size: 6rem;
+        @include heading-text(6rem, $white);
     }
     h3:first-of-type {
         padding: 0 200px 100px 0;
@@ -112,88 +107,181 @@ header {
     flex-direction: column;
     align-items: center;
     h3 {
-        @include heading-text($black);
+        @include heading-text(4.5rem, $black);
     }
     p {
         @include regular-text($black);
     }
-    div:nth-of-type(1)>img {
+    img:nth-of-type(1) {
         @include adjust(23vw, 27vw, -15vh)
     }
-    div:nth-of-type(2)>img {
+    img:nth-of-type(2) {
         @include adjust(20vw, -34vw, 10vh)
     }
-    div:nth-of-type(3) { /* h3 + p */
+    div:nth-of-type(1) { /* h3 + p */
         @include adjust(32vw, 0, 0)
     }
-    div:nth-of-type(4) {
+    img:nth-of-type(3) {
         align-self: flex-end;
     }
-    div:nth-of-type(4)>img {
+    img:nth-of-type(3) {
         @include adjust(20vw, 0, -10vh)
     }
-    div:nth-of-type(5)>img {
+    img:nth-of-type(4) {
         @include adjust(22vw, -21vw, -8vh)
     }
-    div:nth-of-type(6)>img {
+    img:nth-of-type(5) {
         @include adjust(22vw, 24vw, -15vh)
     }
-    div:nth-of-type(7) { /* p */
+    div:nth-of-type(2) { /* p */
         @include adjust(32vw, 0, 0)
     }
-    div:nth-of-type(8) {
+    img:nth-of-type(6) {
         align-self: flex-start;
     }
-    div:nth-of-type(8)>img {
+    img:nth-of-type(6) {
         @include adjust(20vw, 0, -32vh)
     }
-    div:nth-of-type(9)>img {
-        @include adjust(30vw, 15vw, 12vh)
+    img:nth-of-type(7) {
+        @include adjust(30vw, 10vw, 12vh)
+    }
+}
+/* ==================== Section: Both bear sections */
+.bear {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    article {
+        display: flex;
+        align-items: center;
+        div:first-of-type {
+            p {
+                @include regular-text($white);
+                padding-bottom: 20px;
+            }
+            h3 {
+                @include heading-text(4.5rem, $white);
+            }
+            padding-right: 25vw;
+        }
+        div:last-of-type {
+            p:first-of-type {
+                @include heading-text(4.5rem, $white);
+                font-size: 1.5rem;
+                max-width: 80%;
+                padding-bottom: 20px;
+            }
+            p:last-of-type {
+                @include regular-text($white);
+            }
+        }
     }
 }
 
 /* ==================== Section: Golden bear */
-.bear {
+#goldenBear {
     padding: 20vh 0 0 100px;
-    display: flex;
-    align-items: center;
-    div:first-of-type {
-        p {
-            @include regular-text($white);
-            padding-bottom: 20px;
-        }
-        h3 {
-            @include heading-text($white)
-        }
-        padding-right: 15%;
+    article {
+        padding: 15vh 0 5vh 0;
     }
-    div:last-of-type {
-        p:first-of-type {
-            @include heading-text($white);
-            font-size: 1.5rem;
-            max-width: 80%;
-            padding-bottom: 20px;
-        }
-        p:last-of-type {
-            @include regular-text($white);
-        }
+    div>img:first-of-type {
+        @include adjust(60vw, 0, 25vh)
     }
-    img:first-of-type {
-        width: 200px;
-    }
-    img:last-of-type {
-        width: 200px;
+    div>img:last-of-type {
+        @include adjust(20vw, -5vw, 10vh);
+        position: relative;
+        z-index: 2;
     }
 }
+
+/* ==================== Section: Poppy bear */
 #poppyBear {
+    padding-left: 100px;
     background-color: $white;
-    img {
+    overflow: hidden;
+    #textCircle {
         animation: turning 10s linear infinite;
-        width: 30vw;
+        align-self: flex-end;
+        width: 35vw;
+        position: relative;
+        right: -10vw;
+        top: -20vh;
     }
     @keyframes turning {
         to {
             transform: rotateZ(-360deg);
+        }
+    }
+    p, h3 {
+        color: $black;
+    }
+    >div {
+        padding: 30vh 0 20vh 0;
+    }
+    div>img:first-of-type {
+        @include adjust(50vw, 35vw, 0)
+    }
+    div>img:last-of-type {
+        @include adjust(25vw, -35vw, -12vh);
+    }
+}
+
+/* ==================== Footer: Join us, date banner */
+footer {
+    overflow: hidden;
+    padding: 0 200px 50px 100px;
+    aside {
+        background-color: $white;
+        @include heading-text(6rem, $black);
+        width: max-content;
+        span {
+            @include heading-text(6rem, $white);
+            -webkit-text-stroke: 1px $black;
+        }
+        position: relative;
+        right: 55rem;
+        animation: backAndForth 10s linear infinite;
+        @keyframes backAndForth {
+            0%, 100% {
+                transform: rotateZ(45deg) translateX(-20%);
+            }
+            50% {
+                transform: rotateZ(45deg) translateX(20%);
+            }
+        }
+    }
+    >h3 {
+        @include regular-text($white);
+        padding-bottom: 20px;
+    }
+    >p {
+        @include heading-text(2rem, $white);
+        max-width: 35vw;
+        padding-bottom: 30px;
+    }
+    >a {
+        @include RSVP-button();
+    }
+    >div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30vh;
+        div:first-of-type {
+            img {
+                max-width: 25px;
+                padding: 0 5px 5px 0;
+            }
+            p {
+                @include regular-text($white);
+                padding-top: 10px;
+            }
+        }
+        div:last-of-type {
+            img {
+                max-width: 100px;
+                padding-right: 15px;
+            }
         }
     }
 }
