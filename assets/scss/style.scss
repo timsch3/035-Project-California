@@ -344,16 +344,15 @@ footer {
         h3 {
             font-size: 2rem;
         }
-        div {
-            max-width: 90vw !important;
+        div:nth-of-type(n) {
+            @include adjust(90vw, 0, 0);
             padding: 50px 0;
         }
         p, h3 {
             padding: 5px 100px;
         }
-        img {
-            transform: unset !important;
-            max-width: 45vw !important;
+        img:nth-of-type(n) {
+            @include adjust(45vw, 0, 0);
             padding: 2px;
         }
     }
@@ -408,11 +407,10 @@ footer {
             flex-direction: row-reverse;
         }
         div>img:first-of-type {
-            transform: unset !important;
-            max-width: 50vw;
+            @include adjust(50vw, 0, 0)
         }
         div>img:last-of-type {
-            transform: unset !important;
+            transform: unset;
             object-fit: contain;
             position: relative;
             right: -40px;
